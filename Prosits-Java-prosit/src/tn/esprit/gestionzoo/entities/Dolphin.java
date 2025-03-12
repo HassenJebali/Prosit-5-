@@ -12,13 +12,14 @@ public class Dolphin extends Aquatique{
     public float getSwimSpeed() {return swimSpeed;}
     public void setSwimSpeed(float swimSpeed) {this.swimSpeed = swimSpeed;}
 
+    @Override
     public void swim(){
-        System.out.println("this dolphin is swimming");
+        System.out.println("this "+ getName() + " is swimming");
     }
 
     @Override
     public String toString() {
-        return "Dolphin{" + "swimSpeed=" + swimSpeed + '}';
+        return super.toString() +  "Dolphin{" + "swimSpeed=" + swimSpeed + '}';
     }
 
 

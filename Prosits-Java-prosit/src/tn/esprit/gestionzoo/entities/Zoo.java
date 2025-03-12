@@ -1,7 +1,13 @@
 package tn.esprit.gestionzoo.entities;
 
+import tn.esprit.gestionzoo.entities.*;
+
+
+import java.util.Arrays;
+
 public class Zoo {
 
+    private Aquatique[] aquatiqueAnimals = new Aquatique[10];
     public static final int NUMBER_OF_CAGES = 25;
     private Animal[] animals;
     private String name, city;
@@ -21,6 +27,43 @@ public class Zoo {
             return z1;
         return z2;
     }
+
+
+
+    public Aquatique[] getAquatiqueAnimals() {return aquatiqueAnimals;}
+
+    public void addAquatique(Aquatique aquatique) {
+        int i ;
+            for ( i = 0 ;  i<aquatiqueAnimals.length; i++){
+                if (aquatiqueAnimals[i]  == null ){
+                aquatiqueAnimals[i] = aquatique;
+                System.out.println("la place d'indice "+ i +" est rserver pour l'animal "+ aquatique.getName());
+                break;
+            }
+
+        }
+    }
+
+    public void displayNumberOfAquatiqueByType() {
+        int p = 0, d = 0;
+        for (Aquatique aquatique : aquatiqueAnimals) {
+            if (aquatique instanceof Penguin) {
+                p++;
+            }
+            if (aquatique instanceof Dolphin) {
+                d++;
+            }
+            System.out.println("Il y'a " + d + " dolphin et " + p + " penguin");
+        }                                         }
+
+    /* fausse fonctionement ...ClassCastException dans le main */
+    public float maxPenguinSwimmingDepth(){
+        float maxDepth = 0 ;
+        for(Aquatique aquatique : aquatiqueAnimals){
+            Penguin penguin = (Penguin) aquatique;
+            maxDepth = Math.max(maxDepth, penguin.getSwimDepth());
+        }
+    return maxDepth ; }
 
     public Animal[] getAnimals() {
         return animals;
